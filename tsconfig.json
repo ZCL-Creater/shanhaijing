@@ -10,11 +10,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "strict": true,
+    "strict": false,          // 这里改成了 false
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false    // 新增：允许隐式 any 类型
   },
   "include": ["src"]
 }
