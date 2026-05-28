@@ -1,0 +1,1028 @@
+/* ===== 全局样式 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== 全局静音按钮 ===== */
+#mute-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10000;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+#mute-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1a2e;
+  font-family: 'STKaiti', 'KaiTi', '楷体', 'SimSun', serif;
+}
+
+#game-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+#game-container canvas {
+  display: block;
+  pointer-events: none;
+}
+
+/* ===== 开始界面 ===== */
+#start-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  background: radial-gradient(ellipse at center, rgb(20, 30, 48) 0%, rgb(10, 15, 24) 100%);
+  transition: opacity 0.8s ease;
+}
+
+/* 淡出时停止浮动动画，避免按钮与背景不同步 */
+#start-screen.fade-out .start-content {
+  animation: none;
+}
+
+#start-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.start-content {
+  text-align: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.game-title {
+  font-size: 4rem;
+  color: #f0d89c;
+  text-shadow:
+    0 0 20px rgba(240, 216, 156, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #b8c5d6;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.2em;
+}
+
+#start-btn {
+  display: inline-block;
+  padding: 14px 56px;
+  font-size: 1.3rem;
+  font-family: inherit;
+  color: #1a1a2e;
+  background: linear-gradient(135deg, #f0d89c, #c9a85b);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.3em;
+  box-shadow:
+    0 4px 20px rgba(201, 168, 91, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+#start-btn:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 6px 30px rgba(201, 168, 91, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+#start-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(100, 80, 40, 0.2);
+  background: linear-gradient(135deg, #8a8070, #6b5e42);
+  color: #666;
+}
+
+.loading-status {
+  font-size: 0.95rem;
+  color: #c9a85b;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.15em;
+  animation: pulse-text 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.hint {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #6b7d95;
+  letter-spacing: 0.1em;
+}
+
+/* ===== HUD 面板 ===== */
+#hud {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 50;
+  background: rgba(10, 15, 24, 0.85);
+  border: 1px solid rgba(240, 216, 156, 0.3);
+  border-radius: 10px;
+  padding: 14px 20px;
+  backdrop-filter: blur(10px);
+  transition: opacity 0.5s ease;
+}
+
+#hud.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hud-item {
+  font-size: 1rem;
+  color: #d4c5a9;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+.hud-item span {
+  color: #f0d89c;
+  font-weight: bold;
+}
+
+/* ===== 发现提示 ===== */
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 60;
+  background: rgba(10, 15, 24, 0.9);
+  border: 1px solid #f0d89c;
+  border-radius: 12px;
+  padding: 16px 32px;
+  color: #f0d89c;
+  font-size: 1.3rem;
+  letter-spacing: 0.15em;
+  animation: toastIn 0.4s ease, toastOut 0.4s ease 2s forwards;
+  pointer-events: none;
+}
+
+.toast.hidden {
+  display: none;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ===== 对话面板 ===== */
+#dialogue-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 55;
+  background: rgba(10, 15, 24, 0.94);
+  border-top: 1px solid rgba(240, 216, 156, 0.35);
+  padding: 14px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#dialogue-panel.hidden {
+  display: none;
+}
+
+#dialogue-npc-name {
+  font-size: 0.9rem;
+  color: #f0d89c;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+#dialogue-response {
+  font-size: 1rem;
+  color: #d4c5a9;
+  line-height: 1.6;
+  min-height: 1.6em;
+  letter-spacing: 0.05em;
+}
+
+.dialogue-input-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+#dialogue-input {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #e0d5c0;
+  background: rgba(30, 42, 56, 0.7);
+  border: 1px solid rgba(240, 216, 156, 0.3);
+  border-radius: 8px;
+  outline: none;
+  letter-spacing: 0.05em;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#dialogue-input::placeholder {
+  color: #5a6d80;
+}
+
+#dialogue-input:focus {
+  border-color: #c9a85b;
+  box-shadow: 0 0 12px rgba(201, 168, 91, 0.2);
+}
+
+#dialogue-btn {
+  padding: 10px 28px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #1a1a2e;
+  background: linear-gradient(135deg, #f0d89c, #c9a85b);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.15em;
+  font-weight: bold;
+  box-shadow: 0 2px 12px rgba(201, 168, 91, 0.3);
+  transition: background 0.25s ease;
+  white-space: nowrap;
+}
+
+#dialogue-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(201, 168, 91, 0.5);
+}
+
+#dialogue-btn:active {
+  transform: translateY(0);
+}
+
+/* ===== 进入对话浮动按钮 ===== */
+#enter-dialogue-btn {
+  position: fixed;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 80;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+#enter-dialogue-btn.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  pointer-events: none;
+}
+
+#enter-dialogue-action {
+  display: inline-block;
+  padding: 14px 44px;
+  font-size: 1.15rem;
+  font-family: inherit;
+  color: #1a1a2e;
+  background: linear-gradient(135deg, #f0d89c, #c9a85b);
+  border: 1px solid rgba(240, 216, 156, 0.5);
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  box-shadow:
+    0 4px 24px rgba(201, 168, 91, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  animation: enterBtnPulse 2.5s ease-in-out infinite;
+}
+
+#enter-dialogue-action:hover {
+  transform: scale(1.06);
+  box-shadow:
+    0 6px 32px rgba(201, 168, 91, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+#enter-dialogue-action:active {
+  transform: scale(0.97);
+}
+
+@keyframes enterBtnPulse {
+  0%, 100% {
+    box-shadow: 0 4px 24px rgba(201, 168, 91, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 36px rgba(201, 168, 91, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* ===== 问答选项区域 ===== */
+#quest-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+#quest-options.hidden {
+  display: none;
+}
+
+/* 衔接语和问题描述已改为通过 dialogue-response 逐句显示，此处隐藏 */
+#quest-transition-text,
+#quest-question-text {
+  display: none !important;
+}
+
+#quest-question-text {
+  font-size: 0.9rem;
+  color: #f0d89c;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  padding: 8px 12px;
+  background: rgba(201, 168, 91, 0.08);
+  border-left: 3px solid rgba(201, 168, 91, 0.5);
+  border-radius: 4px;
+  word-break: break-word;
+}
+
+#quest-transition-text {
+  font-size: 0.9rem;
+  color: #f0d89c;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+  padding: 8px 12px;
+  background: rgba(201, 168, 91, 0.08);
+  border-left: 3px solid rgba(201, 168, 91, 0.5);
+  border-radius: 4px;
+  word-break: break-word;
+}
+
+.quest-option-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: #e0d5c0;
+  text-align: left;
+  line-height: 1.5;
+  word-break: break-word;
+  white-space: normal;
+  background: rgba(30, 42, 56, 0.7);
+  border: 1px solid rgba(240, 216, 156, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.quest-option-btn:hover {
+  color: #f0d89c;
+  background: rgba(232, 192, 122, 0.15);
+  border-color: rgba(240, 216, 156, 0.6);
+  transform: translateX(4px);
+}
+
+.quest-option-btn:active {
+  background: rgba(232, 192, 122, 0.22);
+  transform: translateX(2px);
+}
+
+/* ===== 对话操作按钮行 ===== */
+.dialogue-actions-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+/* ===== "询问灵印的事情"按钮 ===== */
+#ask-lingyin-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: #fff;
+  background: linear-gradient(135deg, #d4a373, #b8834a);
+  border: 1px solid rgba(212, 163, 115, 0.5);
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  box-shadow: 0 2px 12px rgba(184, 131, 74, 0.4);
+  transition: background 0.3s ease;
+}
+
+#ask-lingyin-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(184, 131, 74, 0.6);
+  background: linear-gradient(135deg, #e0b683, #c9945a);
+}
+
+#ask-lingyin-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 6px rgba(184, 131, 74, 0.3);
+}
+
+#ask-lingyin-btn.hidden {
+  display: none;
+}
+
+/* ===== 退出对话按钮 ===== */
+#exit-dialogue-btn {
+  display: inline-block;
+  padding: 8px 22px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: #d4c5a9;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(240, 216, 156, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+#exit-dialogue-btn:hover {
+  color: #f0d89c;
+  background: rgba(240, 216, 156, 0.12);
+  border-color: rgba(240, 216, 156, 0.5);
+}
+
+#exit-dialogue-btn:active {
+  background: rgba(240, 216, 156, 0.18);
+}
+
+/* ===== 灵印收集进度条 ===== */
+#lingyin-tracker {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 50;
+  background: rgba(10, 15, 24, 0.88);
+  border: 1px solid rgba(180, 140, 220, 0.4);
+  border-radius: 12px;
+  padding: 14px 22px;
+  min-width: 200px;
+  backdrop-filter: blur(10px);
+  transition: opacity 0.5s ease, transform 0.35s ease;
+}
+
+#lingyin-tracker.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+}
+
+.lingyin-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.lingyin-icon {
+  font-size: 1.2rem;
+}
+
+.lingyin-title {
+  font-size: 0.95rem;
+  color: #d4c0e8;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+}
+
+.lingyin-progress-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(40, 30, 60, 0.8);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid rgba(180, 140, 220, 0.25);
+}
+
+.lingyin-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #8b5cf6, #a78bfa, #c4b5fd);
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lingyin-count {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #a78bfa;
+  text-align: right;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+/* ===== 灵印图标横排 ===== */
+.lingyin-icons-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.lingyin-icon-item {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(180, 140, 220, 0.25);
+  background: rgba(20, 15, 35, 0.8);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.lingyin-icon-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) brightness(0.35);
+  opacity: 0.5;
+  transition: filter 0.6s ease, opacity 0.6s ease;
+}
+
+.lingyin-icon-item.collected {
+  border-color: rgba(240, 216, 156, 0.7);
+  box-shadow: 0 0 10px rgba(240, 216, 156, 0.25);
+}
+
+.lingyin-icon-item.collected img {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+}
+
+/* 灵印获得时的金光动画 */
+.lingyin-icon-item.glow-flash {
+  animation: lingyinGlowFlash 1.2s ease-out forwards;
+}
+
+.lingyin-icon-item.glow-flash img {
+  animation: lingyinImgGlow 1.2s ease-out forwards;
+}
+
+@keyframes lingyinGlowFlash {
+  0% {
+    border-color: rgba(180, 140, 220, 0.25);
+    box-shadow: 0 0 0 rgba(240, 216, 156, 0);
+    transform: scale(1);
+  }
+  25% {
+    border-color: rgba(240, 216, 156, 1);
+    box-shadow: 0 0 30px rgba(240, 216, 156, 0.9), 0 0 60px rgba(201, 168, 91, 0.6);
+    transform: scale(1.3);
+  }
+  55% {
+    border-color: rgba(240, 216, 156, 0.8);
+    box-shadow: 0 0 16px rgba(240, 216, 156, 0.5);
+    transform: scale(1.1);
+  }
+  100% {
+    border-color: rgba(240, 216, 156, 0.7);
+    box-shadow: 0 0 10px rgba(240, 216, 156, 0.25);
+    transform: scale(1);
+  }
+}
+
+@keyframes lingyinImgGlow {
+  0% {
+    filter: grayscale(1) brightness(0.35);
+    opacity: 0.5;
+  }
+  25% {
+    filter: grayscale(0) brightness(1.4);
+    opacity: 1;
+  }
+  55% {
+    filter: grayscale(0) brightness(1.15);
+    opacity: 1;
+  }
+  100% {
+    filter: grayscale(0) brightness(1);
+    opacity: 1;
+  }
+}
+
+/* ===== 传送阵激活全屏闪光 ===== */
+#teleport-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 180;
+  background: radial-gradient(circle, rgba(240,216,156,0.6) 0%, rgba(201,168,91,0.3) 30%, transparent 70%);
+  pointer-events: none;
+  animation: flashPulse 0.8s ease-out forwards;
+}
+
+@keyframes flashPulse {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ===== 结局场景基础动画 ===== */
+#ending-overlay {
+  animation: endingFadeIn 1s ease forwards;
+}
+
+@keyframes endingFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ending-container {
+  /* 标题固定不动，不再整体浮动 */
+}
+
+/* 灵印收集完成闪烁提示 */
+#lingyin-tracker.complete {
+  border-color: rgba(240, 216, 156, 0.7) !important;
+  box-shadow: 0 0 20px rgba(240, 216, 156, 0.4);
+  animation: trackerGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes trackerGlow {
+  0% { box-shadow: 0 0 10px rgba(240, 216, 156, 0.3); }
+  100% { box-shadow: 0 0 30px rgba(240, 216, 156, 0.7); }
+}
+
+/* ===== 任务面板切换按钮 ===== */
+#quest-toggle-btn {
+  position: fixed;
+  top: 130px;
+  right: 20px;
+  z-index: 50;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: #f0d89c;
+  background: rgba(10, 15, 24, 0.88);
+  border: 1px solid rgba(240, 216, 156, 0.35);
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+#quest-toggle-btn:hover {
+  background: rgba(240, 216, 156, 0.15);
+  border-color: rgba(240, 216, 156, 0.6);
+  transform: translateY(-1px);
+}
+
+#quest-toggle-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===== 任务面板 ===== */
+#quest-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 90;
+  width: min(420px, 92vw);
+  max-height: 75vh;
+  background: rgba(10, 15, 24, 0.95);
+  border: 1px solid rgba(240, 216, 156, 0.35);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), 0 0 60px rgba(240, 216, 156, 0.08);
+  animation: questPanelIn 0.3s ease;
+}
+
+#quest-panel.hidden {
+  display: none !important;
+}
+
+@keyframes questPanelIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.92); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.quest-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(240, 216, 156, 0.15);
+  flex-shrink: 0;
+}
+
+.quest-panel-title {
+  font-size: 1.05rem;
+  color: #f0d89c;
+  letter-spacing: 0.15em;
+  font-weight: bold;
+}
+
+#quest-close-btn {
+  width: 30px;
+  height: 30px;
+  font-size: 1.3rem;
+  color: #888;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#quest-close-btn:hover {
+  color: #f0d89c;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+}
+
+/* ===== 任务列表 ===== */
+.quest-list {
+  padding: 12px 16px;
+  overflow-y: auto;
+  flex-shrink: 1;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(240, 216, 156, 0.3) transparent;
+}
+
+.quest-list::-webkit-scrollbar {
+  width: 4px;
+}
+.quest-list::-webkit-scrollbar-thumb {
+  background: rgba(240, 216, 156, 0.25);
+  border-radius: 2px;
+}
+
+.quest-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 11px 13px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.quest-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(240, 216, 156, 0.12);
+}
+
+.quest-status-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  margin-top: 1px;
+}
+
+.quest-status-icon.pending {
+  background: rgba(120, 130, 150, 0.3);
+  color: #8892a4;
+  border: 1.5px dashed rgba(120, 130, 150, 0.5);
+}
+
+.quest-status-icon.in_progress {
+  background: rgba(80, 140, 220, 0.2);
+  color: #68a0e8;
+  border: 1.5px solid rgba(80, 140, 220, 0.5);
+  animation: questPulse 1.8s ease-in-out infinite;
+}
+
+.quest-status-icon.completed {
+  background: rgba(100, 200, 120, 0.2);
+  color: #68d878;
+  border: 1.5px solid rgba(100, 200, 120, 0.5);
+}
+
+@keyframes questPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(80, 140, 220, 0.2); }
+  50% { box-shadow: 0 0 0 4px rgba(80, 140, 220, 0); }
+}
+
+.quest-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.quest-name {
+  font-size: 0.9rem;
+  color: #e0d5c0;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+}
+
+.quest-desc {
+  font-size: 0.78rem;
+  color: #8892a4;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.quest-reward {
+  font-size: 0.72rem;
+  color: #f0d89c;
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
+}
+
+.quest-item.completed .quest-name {
+  text-decoration: line-through;
+  text-decoration-color: rgba(100, 200, 120, 0.4);
+  color: #98b898;
+}
+
+.quest-item.completed .quest-desc {
+  color: #5a6655;
+}
+
+.quest-item.completed .quest-reward {
+  color: #68d878;
+}
+
+/* ===== 开场剧情 ===== */
+#opening-overlay {
+  animation: openingFadeIn 1s ease forwards;
+}
+
+@keyframes openingFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.opening-container {
+  animation: openingFloat 4s ease-in-out infinite;
+}
+
+@keyframes openingFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.opening-segment {
+  opacity: 0;
+  animation: segmentFadeIn 0.5s ease forwards;
+}
+
+@keyframes segmentFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#opening-start-btn {
+  animation: btnGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes btnGlow {
+  0% { box-shadow: 0 4px 20px rgba(201,168,91,0.3), inset 0 1px 0 rgba(255,255,255,0.3); }
+  100% { box-shadow: 0 4px 30px rgba(201,168,91,0.6), inset 0 1px 0 rgba(255,255,255,0.3); }
+}
+
+/* ===== 小地图 ===== */
+#minimap-container {
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(240, 216, 156, 0.35);
+  border-radius: 8px;
+  z-index: 49;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== 灵印物品栏 ===== */
+.inventory-section {
+  padding: 14px 16px 18px;
+  border-top: 1px solid rgba(240, 216, 156, 0.15);
+  flex-shrink: 0;
+}
+
+.inventory-section-title {
+  font-size: 0.88rem;
+  color: #c9a85b;
+  letter-spacing: 0.12em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+  gap: 8px;
+}
+
+.artifact-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(180, 140, 220, 0.2);
+  transition: all 0.3s ease;
+}
+
+.artifact-slot.collected {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(167, 139, 250, 0.06));
+  border-color: rgba(180, 140, 220, 0.45);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.12);
+}
+
+.artifact-slot.empty {
+  opacity: 0.35;
+}
+
+.artifact-slot .artifact-emoji {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+  filter: grayscale(0.8);
+}
+
+.artifact-slot.collected .artifact-emoji {
+  filter: none;
+}
+
+.artifact-slot .artifact-name {
+  font-size: 0.72rem;
+  color: #8892a4;
+  letter-spacing: 0.04em;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.artifact-slot.collected .artifact-name {
+  color: #c4b5fd;
+}

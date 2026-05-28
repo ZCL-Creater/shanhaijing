@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>山海经·异兽录</title>
+    <script type="module" crossorigin src="/assets/index-SrV9zvK5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-HGc21XdA.css">
+  </head>
+  <body>
+    <!-- 全局静音按钮 -->
+    <div id="mute-btn">🔊</div>
+
+    <!-- 游戏画布容器 -->
+    <div id="game-container"></div>
+
+    <!-- 左上角 HUD: 坐标 + 声望 -->
+    <div id="hud" class="hidden">
+      <div class="hud-item">🗺️ 坐标: (<span id="coord-x">0</span>, <span id="coord-y">0</span>)</div>
+      <div class="hud-item">🧭 探索进度: <span id="exploration-progress">0%</span></div>
+    </div>
+
+    <!-- 开始界面 -->
+    <div id="start-screen">
+      <div class="start-content">
+        <h1 class="game-title">山海经·异兽录</h1>
+        <p class="subtitle">踏入上古秘境，探寻失落异兽</p>
+        <button id="start-btn">开始探索</button>
+        <p class="hint">WASD 移动角色 · 探索地图上的蓝色区域</p>
+      </div>
+    </div>
+
+    <!-- 发现提示 -->
+    <div id="discovery-toast" class="toast hidden">
+      <span id="toast-text"></span>
+    </div>
+
+    <!-- 灵印收集 -->
+    <div id="lingyin-tracker" class="hidden">
+      <div class="lingyin-header">
+        <span class="lingyin-icon">🔮</span>
+        <span class="lingyin-title">灵印收集</span>
+      </div>
+      <div id="lingyin-icons-row" class="lingyin-icons-row"></div>
+    </div>
+
+    <!-- 任务面板切换按钮 -->
+    <button id="quest-toggle-btn" class="hidden" title="查看任务和灵印">📜 任务</button>
+
+    <!-- 任务与物品栏面板 -->
+    <div id="quest-panel" class="hidden">
+      <div class="quest-panel-header">
+        <span class="quest-panel-title">📜 任务 · 灵印</span>
+        <button id="quest-close-btn">&times;</button>
+      </div>
+
+      <!-- 任务列表 -->
+      <div id="quest-list" class="quest-list">
+        <!-- 由 JS 动态生成 -->
+      </div>
+
+      <!-- 灵印物品栏 -->
+      <div class="inventory-section">
+        <div class="inventory-section-title">🔮 已获灵印</div>
+        <div id="inventory-grid" class="inventory-grid">
+          <!-- 由 JS 动态生成 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 进入对话按钮（浮动在屏幕中央） -->
+    <div id="enter-dialogue-btn" class="hidden">
+      <button id="enter-dialogue-action">进入对话</button>
+    </div>
+
+    <!-- 对话面板 -->
+    <div id="dialogue-panel" class="hidden">
+      <div id="dialogue-npc-name"></div>
+      <div id="dialogue-response"></div>
+      <div class="dialogue-input-row">
+        <input
+          type="text"
+          id="dialogue-input"
+          placeholder="输入你想说的话..."
+          maxlength="120"
+          autocomplete="off"
+        />
+        <button id="dialogue-btn">对话</button>
+      </div>
+      <div id="quest-options" class="hidden">
+        <div id="quest-transition-text"></div>
+        <div id="quest-question-text"></div>
+        <button class="quest-option-btn" data-index="0">选项 A</button>
+        <button class="quest-option-btn" data-index="1">选项 B</button>
+        <button class="quest-option-btn" data-index="2">选项 C</button>
+        <button class="quest-option-btn" data-index="3">选项 D</button>
+      </div>
+      <div class="dialogue-actions-row">
+        <button id="ask-lingyin-btn" class="hidden">询问灵印的事情</button>
+        <button id="exit-dialogue-btn">退出对话</button>
+      </div>
+    </div>
+
+  </body>
+</html>

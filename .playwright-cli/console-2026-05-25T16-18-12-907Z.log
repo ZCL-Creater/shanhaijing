@@ -1,0 +1,17 @@
+[     203ms] [LOG] 📦 开始加载NPC角色图片... @ http://localhost:3001/src/main.ts?t=1779725881108:166
+[     204ms] [LOG] 📦 加载灵印图标... @ http://localhost:3001/src/main.ts?t=1779725881108:198
+[     205ms] [LOG] 📦 加载主角图片... @ http://localhost:3001/src/main.ts?t=1779725881108:233
+[     211ms] [LOG] 🎭 NPC已切换到图片模式: 九尾狐（涂山氏） @ http://localhost:3001/src/main.ts?t=1779725881108:315
+[     212ms] [LOG] 🎭 NPC已切换到图片模式: 白泽 @ http://localhost:3001/src/main.ts?t=1779725881108:315
+[     212ms] [LOG] 🎭 NPC已切换到图片模式: 应龙 @ http://localhost:3001/src/main.ts?t=1779725881108:315
+[     212ms] [LOG] 🎭 NPC已切换到图片模式: 毕方 @ http://localhost:3001/src/main.ts?t=1779725881108:315
+[     212ms] [LOG] 🎭 NPC已切换到图片模式: 饕餮 @ http://localhost:3001/src/main.ts?t=1779725881108:315
+[     212ms] [LOG] 🎭 NPC已切换到图片模式: 刑天 @ http://localhost:3001/src/main.ts?t=1779725881108:315
+[     212ms] [LOG] 🎭 NPC已切换到图片模式: 西王母 @ http://localhost:3001/src/main.ts?t=1779725881108:315
+[     212ms] [LOG] 🌫️ 烟雾系统初始化完成，共 0 个烟雾对象 @ http://localhost:3001/src/effects/SmokeManager.ts:121
+[     213ms] [LOG] 📦 等待 10 张图片加载... @ http://localhost:3001/src/main.ts?t=1779725881108:1328
+[     214ms] [LOG] 📸 NPC图片列表: npc:baize.png, npc:jiuweihu.png, npc:yinglong.png, npc:bifang.png, npc:taotie.png, npc:xingtian.png, npc:xiwangmu.png @ http://localhost:3001/src/main.ts?t=1779725881108:1329
+[     370ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/favicon.ico:0
+[   30218ms] [WARNING] ⚠️ 图片加载超时 (0/10)，强制开始游戏 @ http://localhost:3001/src/main.ts?t=1779725881108:1308
+[   30218ms] [LOG] 已加载:  @ http://localhost:3001/src/main.ts?t=1779725881108:1309
+[   30218ms] [ERROR] 未加载:  @ http://localhost:3001/src/main.ts?t=1779725881108:1310

@@ -1,0 +1,21 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic: "🗺️ 坐标: (2000, 2000)"
+    - generic: "⭐ 声望: 0"
+  - generic:
+    - generic:
+      - generic: 🔮
+      - generic: 灵印收集
+    - generic: 0 / 7
+  - button "📜 任务"
+  - generic:
+    - button "进入对话"
+  - generic:
+    - generic:
+      - textbox "输入你想说的话..."
+      - button "对话"
+    - generic:
+      - button "退出对话"
+  - generic [ref=e5]:
+    - heading "山海经·异兽录" [level=1] [ref=e6]
+    - paragraph [ref=e7]: 加载中，请稍候...

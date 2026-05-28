@@ -1,0 +1,106 @@
+[    1321ms] [LOG] 📦 开始加载NPC角色图片... @ http://localhost:3001/src/main.ts:166
+[    1322ms] [LOG] 📦 加载灵印图标... @ http://localhost:3001/src/main.ts:198
+[    1322ms] [LOG] 📦 加载主角图片... @ http://localhost:3001/src/main.ts:233
+[    1329ms] [LOG] 🎭 NPC已切换到图片模式: 九尾狐（涂山氏） @ http://localhost:3001/src/main.ts:315
+[    1329ms] [LOG] 🎭 NPC已切换到图片模式: 白泽 @ http://localhost:3001/src/main.ts:315
+[    1329ms] [LOG] 🎭 NPC已切换到图片模式: 应龙 @ http://localhost:3001/src/main.ts:315
+[    1329ms] [LOG] 🎭 NPC已切换到图片模式: 毕方 @ http://localhost:3001/src/main.ts:315
+[    1329ms] [LOG] 🎭 NPC已切换到图片模式: 饕餮 @ http://localhost:3001/src/main.ts:315
+[    1329ms] [LOG] 🎭 NPC已切换到图片模式: 刑天 @ http://localhost:3001/src/main.ts:315
+[    1329ms] [LOG] 🎭 NPC已切换到图片模式: 西王母 @ http://localhost:3001/src/main.ts:315
+[    1330ms] [LOG] 🌫️ 烟雾系统初始化完成，共 0 个烟雾对象 @ http://localhost:3001/src/effects/SmokeManager.ts:121
+[    1331ms] [LOG] 📦 等待 10 张图片加载... @ http://localhost:3001/src/main.ts:1328
+[    1332ms] [LOG] 📸 NPC图片列表: npc:baize.png, npc:jiuweihu.png, npc:yinglong.png, npc:bifang.png, npc:taotie.png, npc:xingtian.png, npc:xiwangmu.png @ http://localhost:3001/src/main.ts:1329
+[    1567ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/favicon.ico:0
+[   31337ms] [WARNING] ⚠️ 图片加载超时 (0/10)，强制开始游戏 @ http://localhost:3001/src/main.ts:1308
+[   31337ms] [LOG] 已加载:  @ http://localhost:3001/src/main.ts:1309
+[   31337ms] [ERROR] 未加载:  @ http://localhost:3001/src/main.ts:1310
+[  144454ms] [LOG] ======================================== @ test-dialogue.js:20
+[  144454ms] [LOG]   双模式对话系统 - 自动化测试 @ test-dialogue.js:21
+[  144454ms] [LOG] ========================================
+ @ test-dialogue.js:22
+[  144455ms] [LOG] 
+========== 场景1: 点击NPC → 显示输入框和"询问灵印的事情"按钮 ==========
+ @ test-dialogue.js:42
+[  144455ms] [LOG] 
+========== 场景2: 正常打字聊天 → 自由对话模式 ==========
+ @ test-dialogue.js:63
+[  144455ms] [LOG] 
+========== 场景3: 点击"询问灵印的事情" → 隐藏输入框，显示3个选项 ==========
+ @ test-dialogue.js:81
+[  144455ms] [LOG] 📋 INFO 题目: 若你得到了改变一切的力量，你最想做什么？ @ test-dialogue.js:110
+[  144455ms] [LOG] 📋 INFO A: 统治世界，让所有人臣服于我。 @ test-dialogue.js:111
+[  144455ms] [LOG] 📋 INFO B: 让破碎的山海经世界恢复往日的生机与平衡。 @ test-dialogue.js:112
+[  144455ms] [LOG] 📋 INFO C: 把所有的财宝都搬回家。 @ test-dialogue.js:113
+[  144455ms] [LOG] 📋 INFO 正确答案: B @ test-dialogue.js:114
+[  144455ms] [LOG] 
+========== 场景4: 点击错误选项 → 显示剩余次数，重新显示问题 ==========
+ @ test-dialogue.js:116
+[  144455ms] [LOG] 
+========== 场景5: 点击正确选项 → 获得灵印，按钮消失 ==========
+ @ test-dialogue.js:147
+[  144456ms] [LOG] 
+========== 场景6: 点击已经获得灵印的NPC → "询问灵印的事情"按钮不显示 ==========
+ @ test-dialogue.js:189
+[  144456ms] [LOG] 
+========== 额外测试: 西王母特殊逻辑 ==========
+ @ test-dialogue.js:205
+[  144456ms] [LOG] 
+========== 场景3详细: 切换模式时输入框显隐 ==========
+ @ test-dialogue.js:215
+[  144456ms] [LOG] 
+======================================== @ test-dialogue.js:245
+[  144456ms] [LOG]   测试结果汇总 @ test-dialogue.js:246
+[  144456ms] [LOG] ========================================
+ @ test-dialogue.js:247
+[  144456ms] [LOG] ✅ PASS DialogUI.init 方法存在 @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS DialogUI.startQuest 方法存在 @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS DialogUI.returnToFreeMode 方法存在 @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS DialogUI.handleOptionClick 方法存在 @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS DialogUI.destroy 方法存在 @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS onSetInputVisible 回调定义存在 @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS onQuestCompleted 回调定义存在 @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS onShowBubble 回调定义存在 @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS onFreeChatSubmit 回调定义存在 @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS 初始 mode 为 free @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS 初始 isQuestActive 为 false @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS 初始 isQuestCompleted 为 false @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS 当前模式为 free（自由对话） @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS 输入框可见回调正确（默认true，init后会设为true） @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS 切换前模式为 free @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS 模式已切换到 quest @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS isQuestActive 为 true @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS 输入框已被隐藏 @ test-dialogue.js:253
+[  144456ms] [LOG] ✅ PASS NPC "九尾狐（涂山氏）" 存在问答配置 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 选项A存在 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 选项B存在 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 选项C存在 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 正确答案为 B @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 回答错误1次后不应被困（首次失败） @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS failCount 递增为1 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS isTrappedForever 应为 false @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 回答错误2次后不应被困 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS failCount 递增为2 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 剩余次数应为1，实际为 1 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 回答错误3次后应被困 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS failCount 为3 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS isTrappedForever 应为 true @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 获得奖励: 青丘灵印 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 奖励名称匹配: 青丘灵印 === 青丘灵印 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 九尾狐（涂山氏） 在已收集列表中 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 已收集灵印数量为1 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS isQuestCompleted 标记为 true @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS isQuestActive 状态已变化 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 返回自由模式后 mode 为 free @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 返回自由模式后输入框恢复可见 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 九尾狐（涂山氏） 已在收集列表中 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 重新初始化时 isQuestCompleted 应为 true @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 应龙 不在已收集列表中 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 未获得灵印的NPC isQuestCompleted 为 false，按钮应显示 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 灵印不足6枚时不能见西王母 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS 集齐6枚灵印后可以见西王母 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS quest模式下HTML输入框被隐藏 @ test-dialogue.js:253
+[  144457ms] [LOG] ✅ PASS free模式下HTML输入框恢复显示 @ test-dialogue.js:253
+[  144457ms] [LOG] 
+总计: 48 通过, 0 失败 @ test-dialogue.js:256
+[  144458ms] [LOG] 测试完成！可通过 window.__TEST_RESULTS__ 查看结果 @ test-dialogue.js:269
