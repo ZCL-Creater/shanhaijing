@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import path from 'path'
 
-export default defineConfig({
-  base: '/shanhaijing/',
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/shanhaijing/' : '/',
   server: {
     host: true,
     port: 3000,
@@ -12,4 +12,4 @@ export default defineConfig({
       'leafer-ui': path.resolve(__dirname, 'node_modules/leafer-ui/dist/web.module.js'),
     },
   },
-})
+}))
