@@ -1,0 +1,1 @@
+{"envId": "", "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json", "version": "2.0", "functionRoot": "./cloudfunctions", "functions": [], "framework": {"name": "node", "plugins": {"webHosting": {"use": "@cloudbase/framework-plugin-web-hosting", "inputs": {"cloudPath": "/shanhaijng", "localPath": "./dist"}}}}}

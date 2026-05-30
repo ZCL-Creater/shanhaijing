@@ -630,45 +630,11 @@ dialogueBtn.addEventListener('click', async () => {
     currentNPC.showResponse(reply)
     DialogUI.typeText(reply)
 
-    // ========== 西王母特殊逻辑：必须正确回答最终试炼才能获得灵印 ==========
-    if (currentNPC.name === '西王母') {
-      const question = getNPCQuestion('西王母')
-      const quest = questManager.getQuest('西王母')
-      if (question && quest && quest.status === 'in_progress') {
-        const answer = userText.trim()
-        const correctOption = question.options[question.correct]
-        const isCorrect =
-          answer.toUpperCase() === question.correct ||
-          answer.includes(correctOption.substring(0, 4)) ||
-          answer.includes('初心')
-
-        if (isCorrect) {
-          // 答案正确 → 播放正确音效
-          AudioManager.getInstance().playSound('zhengque.mp3', 0.5)
-          // 答案正确 → 授予第七枚灵印
-          const reward = questManager.completeQuest(currentNPC.name)
-          if (reward) {
-            inventory.addArtifact(reward)
-            QuestManager.collectArtifact(currentNPC.name)
-            updateLingyinProgress()
-            // 额外展示成功提示
-            currentNPC.showResponse('很好，你通过了最后的考验。昆仑灵印归你了……传送令牌已合成，去吧，前往地图中央的传送阵。')
-            DialogUI.typeText('很好，你通过了最后的考验。昆仑灵印归你了……传送令牌已合成，去吧，前往地图中央的传送阵。')
-            // 不自动退出对话，与其他NPC保持一致，让玩家自行点击退出对话
-            setTimeout(() => {
-              ArtifactEffect.play(leafer, playerX, playerY)
-            }, 400)
-          }
-        } else {
-          // 答案错误 → 播放错误音效
-          AudioManager.getInstance().playSound('chujue.mp3', 0.5)
-          // 答案错误 → 不计入灵印，但累计失败次数
-          const trapped = QuestManager.checkTrapped(currentNPC.name)
-          if (trapped) {
-            showTrappedWarning()
-          }
-        }
-      }
+    // ========== 西王母特殊逻辑：自由聊天不做答案判定 ==========
+    // 答案判定仅通过"询问灵印的事情"按钮进入问答模式（DialogUI A/B/C/D 选项）时触发
+    // 自由聊天模式不检查答案、不播放音效，让玩家正常与 AI 对话
+    if (false) {
+      // 此分支已禁用：西王母的问答仅由 DialogUI.startQuest() 选项按钮处理
     } else {
       // ========== 其他NPC：双模式逻辑 ==========
       // 如果 DialogUI 正在控制问答模式，跳过文本答案检查（由选项按钮处理）

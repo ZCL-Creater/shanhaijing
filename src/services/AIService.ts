@@ -26,7 +26,7 @@ export function toggleMockMode(mock: boolean) {
 // DeepSeek 兼容 OpenAI Chat Completions 接口格式
 // 文档：https://platform.deepseek.com/api-docs/
 // ========================================================================
-const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions'
+const DEEPSEEK_API_URL = '/api/deepseek'
 const DEEPSEEK_API_KEY = import.meta.env.VITE_DEEPSEEK_API_KEY;
 const DEEPSEEK_MODEL = 'deepseek-chat'   // DeepSeek-V3 对话模型
 
