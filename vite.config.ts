@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import path from 'path'
 
 export default defineConfig({
-  base: '/shanhaijng/',
+  base: '/',
   server: {
     host: true,
     port: 3000,
